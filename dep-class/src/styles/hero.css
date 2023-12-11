@@ -1,0 +1,85 @@
+
+*, html, body {
+    font-family: 'Clash Display', sans-serif;
+    color: white;
+    font-size: 1rem;
+}
+
+body,html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    background-color: black;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    border: 0;
+}
+
+.main_video {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+
+.nav {
+    position: absolute;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 50px;
+    margin-top: 50px;
+    padding-top:40px;
+}
+
+.nav a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: white;
+}
+
+.nav a:hover {
+    color: #bee3d1;
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.content {
+    z-index: 500;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -20px;
+}
+
+.content h1 {
+    font-family: 'Technor', sans-serif;
+    font-size: 80px;
+}
+
+@media (max-width: 768px) {
+    .content h1 {
+        font-size: 40px;
+    }
+}
+
+
+
+   
+
+

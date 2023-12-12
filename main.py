@@ -14,12 +14,12 @@ async def prediction(data):
     
        print(data)
        print(type(data))
-       data_dict = json.loads(data) 
+       data_dict = eval(data)
        print(data_dict)
        print(type(data_dict))
-       data_list = list(data_dict.values())
+       data_list = [list(data_dict.values())]
        print(data_list)
-       response = get_department([data_list])
+       response = get_department(data_list)
        print(response)
        if response["status"] == "success":
            return response["data"]

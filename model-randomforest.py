@@ -4,14 +4,12 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.impute import SimpleImputer
 import pickle
+import random as rd 
 
-# Load the CSV file with correct delimiter
 df = pd.read_csv('Algorithm.csv', delimiter=',')
 
-# Remove columns with 'Unnamed' headers
 df = df.loc[:, ~df.columns.str.contains('Unnamed')]
 
-# Use the correct column names
 df = df.drop(columns=['Whats your full name?'])
 
 # Define features and target
@@ -39,7 +37,7 @@ classifier.fit(X_train_imputed, y_train)
 # Save the trained model and imputer to a pickle file
 with open('random_forest_model.pickle', 'wb') as model_file:
     pickle.dump(classifier, model_file)
-
+# Make predictions on the test set
 with open('imputer.pickle', 'wb') as imputer_file:
     pickle.dump(imputer, imputer_file)
 
@@ -51,10 +49,13 @@ accuracy = accuracy_score(y_test, y_pred)
 print(f'Test Accuracy: {accuracy:.2f}')
 
 # Now, let's get input values from the user
-new_input_values = {}
-for feature in X.columns:
-    value = input(f'Enter your rating for "{feature}": ')
-    new_input_values[feature] = float(value)
+def generate_random_list():
+    random_list = []
+    for i in range(22):
+        random_list.append(rd.randint(1,5))
+    return random_list
+new_input_values = generate_random_list();
+
 
 # Convert the input values to a DataFrame
 new_data = pd.DataFrame([new_input_values])
@@ -62,7 +63,7 @@ new_data = pd.DataFrame([new_input_values])
 # Impute missing values in the new data
 new_data_imputed = imputer.transform(new_data)
 print(new_data_imputed)
+print(type(new_data_imputed))
 # Make predictions on the new data
 predicted_department = classifier.predict(new_data_imputed)
-
-print(f'Predicted Department: {predicted_department[0]}')
+string_out = predicted_department[0]

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'website/index.css' %}">
+
+</head>
+<body>
+    <div class="wrapper"> 
+        <header class="site-header">
+          <nav>
+            <a href="/"><strong>TQ</strong></a> | 
+            <a href="/">TaqeeqFest-Website</a>
+            <a href="/">Cyber-Cypher-Website</a>
+       
+          </nav>
+        </header>
+      
+        <main>
+          <div class="home-page">
+            <div class="block">
+              <h1>Hey !</br>Welcome To Taqneeq 16.0</h1>
+              <p class="intro">Planning To join Taqneeq Check out what departnment Would be The best suit for You  </p>
+              <a href="{% url 'form' %}" class="button">Go Ahead</a>
+            </div>
+            <div class="block">
+            </div>
+          </div>
+        </main>
+      
+        <footer>
+          <small>All content &copy; Taqneeq Fest</br> Made with ❤️ by tech  </small>
+        </footer>
+      </div>
+</body>
+</html>

@@ -1,19 +1,50 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Result</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taqneeq Fest Departnment Classifier</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'website/index.css' %}">
 </head>
 <body>
-    <h1>Result</h1>
+<script type="module" src="{% static 'website/script.js' %}"></script>
+
+<!-- Canvas -->
+<canvas class="orb-canvas"></canvas>
+<div class="overlay">
+  <div class="overlay__inner">
 
     {% if department %}
-        <p>Your predicted department is: {{ department }}</p>
+
+    <h1 class="overlay__title">
+      Taqneeq 16.0</br> 
+      Your predicted department is:      <span class="text-gradient">{{ department }} </span> 
+    </h1>
     {% else %}
-        <p>No department prediction available.</p>
+    <h1 class="overlay__title">
+      Taqneeq 16.0</br> 
+      No prediction Avaliable
+    </h1>
     {% endif %}
 
-    <p>Additional content or instructions can go here.</p>
+    <div class="overlay__btns">
+
+      <button class="overlay__btn overlay__btn--transparent">
+        <a href="https://taqneeqfest.com" >
+          Taqneeq Fest Website <3
+        </a>
+      </button>
+
+      <button class="overlay__btn overlay__btn--transparent">
+        <a href="{% url 'index' %}" >
+          Made With ❤️ By Tech 
+        </a>
+      </button>
+    </div>
+  </div>
+</div>
+
+
 </body>
 </html>

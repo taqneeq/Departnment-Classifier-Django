@@ -247,10 +247,10 @@
 		<form action="{% url 'result' %}" method="POST">
 			{% csrf_token %}
 
-			<input type="hidden" type="text" id="modeldata" class="form__input" name='modeldata' />
-		<div class="submit-button">
-			<input type="submit" value="Submit" id="submit" onclick="check()">
-		</div>
+			<input type="hidden" name="modeldata" id="modeldata" class="form__input" />
+			<div class="submit-button">
+				<input type="submit" value="Submit" id="submit" onclick="checkAndSubmit()">
+			</div>
 		</form>
 	</div>
 </body>
@@ -267,7 +267,7 @@ function myFunction() {
 }
 </script>
 <script>
-	function check() {
+	function checkAndSubmit() {
     var q1=document.quiz.b1.value;
     var q2=document.quiz1.b2.value;
     var q3=document.quiz2.b3.value;
@@ -293,9 +293,10 @@ function myFunction() {
 
 
     var modeldata = [q1, q2, q3,q4,q5,q6,q7,q8,q9,q10,q11,q12,q13,q14,q15,q16,q17,q18,q19,q20,q21, q22];
-        console.log(modeldata);
+    console.log(modeldata);
 	var input = document.querySelector('input[name="modeldata"]');
-	input.value = modeldata;
+    input.value = JSON.stringify(modeldata);
+	document.forms[0].submit(); 
 	 ;}
 </script>
 </html>

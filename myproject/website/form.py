@@ -1,10 +1,13 @@
+
 import pickle
 import os 
 import pandas as pd
 from django.conf import settings
 
 def get_department(data):
-    pickle_file_path = os.path.join(settings.STATIC_ROOT, "website/data.pickle")
+    static_folder = settings.STATIC_ROOT
+    pickle_file_path = os.path.join(settings.BASE_DIR, 'website', 'static', 'website', 'modle.pickle')  # Use this if STATIC_URL is not set
+
     f = open(pickle_file_path, 'rb')
     classifier = pickle.load(f)
     f.close()
@@ -35,5 +38,6 @@ def get_department(data):
     }
     sample = pd.DataFrame.from_dict(sample)
 
-    prediction = classifier.predict(sample) if prediction else "Unknown"
+    prediction = classifier.predict(sample)
+    print(prediction)
     return prediction[0].upper()
